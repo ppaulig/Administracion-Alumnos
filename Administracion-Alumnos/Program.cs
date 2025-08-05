@@ -33,9 +33,23 @@ namespace Administracion_Alumnos
             public double nota; // nota del parcial
             public string fecha; // fecha del parcial
         }
-       
 
-    // MENUS - Definimos los menus para cada seccion.
+    // VARIABLES
+
+        public static List<Alumnos> alumnos = new List<Alumnos>();
+
+        public static List<Materias> materias = new List<Materias>();
+
+        public static List<Alumno_Materias> alumno_materias = new List<Alumno_Materias>();
+
+        public static string archivo_alumnos = "Alumnos.txt";
+
+        public static string archivo_alumno_materias = "Alumno_Materias.txt";
+
+        public static string archivo_materias = "Materias.txt";
+
+
+        // MENUS - Definimos los menus para cada seccion.
 
         static void Menu_Principal()
         {
@@ -197,6 +211,64 @@ namespace Administracion_Alumnos
                 }
             }
             return entrada;
+        }
+
+        static int Validar_Dni(string mensaje)
+        {
+            Console.Write(mensaje);
+            int num = 0;
+            bool esint = false;
+            string entrada = "";
+            while (!esint)
+            {
+                entrada = Console.ReadLine();
+                if ((int.TryParse(entrada, out num)) && ((num > 9999999) && (num < 100000000)))
+                {
+                    esint = true;
+                }
+                else
+                {
+
+                    Console.WriteLine("El dato ingresado no es un número DNI valido, intente de nuevo: ");
+                }
+            }
+            return num;
+        }
+
+        static string Validar_Materia(string mensaje)
+        {
+            Console.WriteLine(mensaje);
+            bool esvalida = false;
+            int num = 0;
+            string materia = "";
+            while (!esvalida)
+            {
+                materia = Console.ReadLine();
+                if (int.TryParse(materia, out num))
+                {
+                    Console.WriteLine("El nombre de una materia no puede ser un número, intente de nuevo: ");
+                }
+                else
+                {
+                    esvalida = true;
+                }
+            }
+            return materia;
+        }
+
+
+        // ARCHIVOS
+        static void Leer_Archivo() // REVISAR COMO FUNCIONA
+        {
+            using (StreamReader lector = new StreamReader(notaAlumnos)) // hacer que le pasen por parametro el archivo a leer.
+            {
+                string linea = lector.ReadLine();
+                while (linea != null)
+                {
+                    Console.WriteLine(linea);
+                    linea = lector.ReadLine();
+                }
+            }
         }
 
 
