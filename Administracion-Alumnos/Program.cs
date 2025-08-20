@@ -7,13 +7,10 @@ using static Administracion_Alumnos.Program;
 
 namespace Administracion_Alumnos
 {
-    //VERSION NUEVA MEJORADA
-    // TODO:
-    // testing
     internal class Program
     {
 
-    // STRUCTS - Definimos Structs que serian nuestros objetos con sus atributos
+    // STRUCTS
         public struct Alumnos
         {
             public int indice;
@@ -35,9 +32,9 @@ namespace Administracion_Alumnos
             public int indice;
             public int indiceAlumno;
             public int indiceMateria;
-            public string estado; // "aprobado" - "desaprobado" - "en curso"
-            public double nota; // nota del parcial
-            public string fecha; // fecha del parcial
+            public string estado; // "aprobado" - "desaprobado" - "anotado"
+            public double nota; 
+            public string fecha; 
         }
 
         static string SerializarAlumno(Alumnos alumno) =>
@@ -50,7 +47,7 @@ namespace Administracion_Alumnos
             $"{am.indice},{am.indiceAlumno},{am.indiceMateria},{am.estado},{am.nota},{am.fecha}";
 
 
-        // VARIABLES
+    // VARIABLES
 
         public static List<Alumnos> alumnos = new List<Alumnos>();
 
@@ -60,9 +57,7 @@ namespace Administracion_Alumnos
 
         public static string archivo_alumnos = "Archivos/Alumnos.txt";
 
-
         public static string archivo_alumno_materias = "Archivos/Alumno_Materias.txt";
-
 
         public static string archivo_materias = "Archivos/Materias.txt";
 
@@ -73,14 +68,12 @@ namespace Administracion_Alumnos
         public static int ultimoIdAlumnoMateria = 0;
 
 
-
-        // MENUS - Definimos los menus para cada seccion.
-
+    // MENÚS - Definimos los menús para cada sección.
         static void Menu_Principal()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("---------------------------------------");
-            Console.WriteLine("      ¿A QUE SECTOR DESEA INGRESAR?");
+            Console.WriteLine("      ¿A QUÉ SECTOR DESEA INGRESAR?");
             Console.WriteLine("             1. Alumnos");
             Console.WriteLine("             2. Materias");
             Console.WriteLine("             3. Archivo de notas");
@@ -93,12 +86,10 @@ namespace Administracion_Alumnos
 
         static void Menu_Alumnos()
         {
-            //Se tiene que generar un menú que pueda ingresar alta, baja y modificación de alumno, mostrar alumnos activos, mostrar alumnos inactivos.
-
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("         SECTOR ALUMNOS   ");
             Console.WriteLine("--------------------------------");
-            Console.WriteLine("       ¿QUE DESEA HACER?");
+            Console.WriteLine("       ¿QUÉ DESEA HACER?");
             Console.WriteLine("   1. Dar de alta un alumno");
             Console.WriteLine("   2. Dar de baja un alumno");
             Console.WriteLine("   3. Modificar un alumno");
@@ -113,12 +104,10 @@ namespace Administracion_Alumnos
 
         static void Menu_Materias()
         {
-            //Se tiene que generar un menú que se pueda realizar alta, baja y modificación de las materias.
-
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("         SECTOR MATERIAS   ");
             Console.WriteLine("--------------------------------");
-            Console.WriteLine("       ¿QUE DESEA HACER?");
+            Console.WriteLine("       ¿QUÉ DESEA HACER?");
             Console.WriteLine("   1. Dar de alta una materia");
             Console.WriteLine("   2. Dar de baja una materia");
             Console.WriteLine("   3. Modificar una materia");
@@ -131,12 +120,10 @@ namespace Administracion_Alumnos
 
         static void Menu_Notas()
         {
-            // Alumno materias será el archivo encargado de mantener las notas, si la materia esta cursada y si la nota del final con la fecha. Habrá un menú para anotar al usuario.
-
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("           SECTOR NOTAS   ");
             Console.WriteLine("--------------------------------");
-            Console.WriteLine("        ¿QUE DESEA HACER?");
+            Console.WriteLine("        ¿QUÉ DESEA HACER?");
             Console.WriteLine("  1. Agregar nota de un alumno");
             Console.WriteLine("         2. Leer el archivo");
             Console.WriteLine("        3. Volver al inicio");
@@ -149,21 +136,21 @@ namespace Administracion_Alumnos
         static void Menu_Modificar_Alumno()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("         ¿Que desea modificar?");
+            Console.WriteLine("         ¿QUÉ DESEA MODIFICAR?");
             Console.WriteLine("--------------------------------------");
             Console.WriteLine("           1. Nombre");
             Console.WriteLine("           2. Apellido");
-            Console.WriteLine("           3. Dni");
-            Console.WriteLine("           4. Feha de nacimiento");
+            Console.WriteLine("           3. DNI");
+            Console.WriteLine("           4. Fecha de nacimiento");
             Console.WriteLine("           5. Domicilio");
             Console.WriteLine("--------------------------------------");
             Console.Write(": ");
             Console.ResetColor();
         }
 
-    // OPCIONES MENU - Cuando entramos en cada menu tenemos un submenu con varias opciones. Nos encargamos de validar y capturar la opcion elegida por el usuario.
+    // OPCIONES MENÚ - Cuando entramos en cada menú tenemos un submenú con opciones. Se valida y captura la opción elegida por el usuario.
 
-        static int Validar_Opcion(int primerOpcion, int ultimaOpcion) // Funcion para validar las opciones de cada menu/submenu.
+        static int Validar_Opcion(int primerOpcion, int ultimaOpcion) // Función para validar las opciones de cada menú/submenú.
         {
             int opcion = 0;
             bool esvalida = false;
@@ -182,35 +169,35 @@ namespace Administracion_Alumnos
             return opcion;
         }
 
-        static int Opcion_Principal() // Desde Main llamamos al menu principal para arrancar el programa y que el usuario elija a que seccion entrar. (opMenu1)
+        static int Opcion_Principal() // Desde Main llamamos al menú principal para arrancar el programa y que el usuario elija a que sección entrar.
         {
             Menu_Principal();
             int opcion = Validar_Opcion(1, 4);
             return opcion;
         }
 
-        static int Opcion_Alumnos() // Desde el menu principal el usuario elige la opcion 1 'Alumnos'. Entramos en esa seccion y tomamos la opcion que elige el usuario. (opMenu2)
+        static int Opcion_Alumnos() // Desde el menú principal el usuario elige la opción 1 'Alumnos'. Entramos en esa sección y tomamos la opción que elige el usuario.
         {
             Menu_Alumnos();
             int opcion = Validar_Opcion(1, 6);
             return opcion;
         }
 
-        static int Opcion_Materias() // Desde el menu principal el usuario elige la opcion 2 'Materias'. Entramos en esa seccion y tomamos la opcion que elige el usuario. (opMenuu3)
+        static int Opcion_Materias() // Desde el menú principal el usuario elige la opción 2 'Materias'. Entramos en esa sección y tomamos la opción que elige el usuario.
         {
             Menu_Materias();
             int opcion = Validar_Opcion(1, 4);
             return opcion;
         }
 
-        static int Opcion_Notas() // Desde el menu principal el usuario elige la opcion 3 'Archivo de notas'. Entramos en esa seccion y tomamos la opcion que elige el usuario. (opMenu4)
+        static int Opcion_Notas() // Desde el menú principal el usuario elige la opción 3 'Archivo de notas'. Entramos en esa sección y tomamos la opción que elige el usuario.
         {
             Menu_Notas();
             int opcion = Validar_Opcion(1,3);
             return opcion;
         }
 
-        static int Opcion_Modificar_Alumno() // Desde la seccion 'Alumnos' el usuario elige la opcion 3 'Modificar un alumno'. Entramos en esa seccion y tomamos la opcion que elige el usuario. (opMMenu3)
+        static int Opcion_Modificar_Alumno() // Desde la sección 'Alumnos' el usuario elige la opción 3 'Modificar un alumno'. Entramos en esa sección y tomamos la opción que elige el usuario.
         { 
             Menu_Modificar_Alumno();
             int opcion = Validar_Opcion(1, 5);
@@ -218,27 +205,34 @@ namespace Administracion_Alumnos
         }
 
     // VALIDACIONES DE ENTRADA
-        static string Validar_Nombre(string mensaje) // El nombre o apellido no puede ser un numero. AGREGAR: NO DEBE SER VACIO ""
+        static string Validar_String(string mensaje) // Valida que los strings ingresados por el usuario no sean vacíos ni números.
         {
             Console.Write(mensaje);
-            bool esnombre = false;
+            bool esvalido = false;
             string entrada = "";
-            while (!esnombre)
+            while (!esvalido)
             {
                 entrada = Console.ReadLine();
                 if (int.TryParse(entrada, out int num))
                 {
-                    Console.Write("Un nombre o apellido no debe contener números, intente de nuevo: ");
+                    Console.Write("El valor ingresado no debe ser un número, intente de nuevo: ");
                 }
                 else
                 {
-                    esnombre = true;
+                    if (entrada == "")
+                    {
+                        Console.WriteLine("El valor ingresado no puede ser vacío, intente de nuevo: ");
+                    }
+                    else
+                    {
+                        esvalido = true;
+                    }
                 }
             }
             return entrada;
         }
 
-        static int Validar_Dni(string mensaje) // agregar que ese dni no exista ya
+        static int Validar_Dni(string mensaje) // Valida que el número ingresado por el usuario cumpla con la cantidad de dígitos de un DNI.
         {
             Console.Write(mensaje);
             int num = 0;
@@ -254,13 +248,13 @@ namespace Administracion_Alumnos
                 else
                 {
 
-                    Console.WriteLine("El dato ingresado no es un número DNI valido, intente de nuevo: ");
+                    Console.WriteLine("El dato ingresado no es un número DNI válido, intente de nuevo: ");
                 }
             }
             return num;
         }
 
-        static string siOno(string mensaje)
+        static string siOno(string mensaje) // Valida que la respuesta del usuario a una pregunta sea solo si/no.
         {
             string entrada = "";
             Console.Write(mensaje);
@@ -281,28 +275,8 @@ namespace Administracion_Alumnos
             return entrada;
         }
 
-        static string Validar_Materia(string mensaje) // agregar que esa materia no exista ya
-        {
-            Console.WriteLine(mensaje);
-            bool esvalida = false;
-            int num = 0;
-            string materia = "";
-            while (!esvalida)
-            {
-                materia = Console.ReadLine();
-                if (int.TryParse(materia, out num))
-                {
-                    Console.WriteLine("El nombre de una materia no puede ser un número, intente de nuevo: ");
-                }
-                else
-                {
-                    esvalida = true;
-                }
-            }
-            return materia;
-        }
 
-        static double Validar_Nota_Final()
+        static double Validar_Nota_Final() // Valida que la nota del examen sea un double entre 0 y 10.
         {
             Console.Write("Ingrese la nota obtenida en el examen final: ");
             double nota = 0;
@@ -330,7 +304,7 @@ namespace Administracion_Alumnos
             return nota;
         }
 
-        // ARCHIVOS
+    // ARCHIVOS
 
         static void Cargar_Alumnos() // Lee el archivo y guarda los alumnos en una lista.
         {
@@ -411,9 +385,9 @@ namespace Administracion_Alumnos
             }
         }
 
-        static void Guardar_Archivo<T>(string rutaArchivo, List<T> lista, Func<T, string> serializar)
+        static void Guardar_Archivo<T>(string rutaArchivo, List<T> lista, Func<T, string> serializar) // Reescribe el archivo con la lista de datos actualizada.
         {
-            using (StreamWriter escritor = new StreamWriter(rutaArchivo, false))
+            using (StreamWriter escritor = new StreamWriter(rutaArchivo, false)) 
             {
                 foreach (var item in lista)
                 {
@@ -424,8 +398,8 @@ namespace Administracion_Alumnos
 
 
 
-        // LOGICA DE NEGOCIO
-        static void Alumnos_Activos() // Busca en la lista de alumnos lo que su propiedad activo sea true y los muestra uno por uno.
+    // LÓGICA DE NEGOCIO
+        static void Alumnos_Activos() // Busca en la lista los alumnos activos y los muestra uno por uno.
         {
             bool listavalida = false;
             Console.WriteLine("ALUMNOS ACTIVOS");
@@ -443,9 +417,9 @@ namespace Administracion_Alumnos
             }
         }
 
-        static void Alumnos_Inactivos() // Busca en la lista de alumnos lo que su propiedad activo sea true y los muestra uno por uno.
+        static void Alumnos_Inactivos() // Busca en la lista los alumnos inactivos y los muestra uno por uno.
         {
-            
+ 
             bool listavalida = false;
             Console.WriteLine("ALUMNOS INACTIVOS");
             for (int i = 0; i < alumnos.Count; i++)
@@ -462,7 +436,7 @@ namespace Administracion_Alumnos
             }
         }
 
-        static void Alta_Alumno()
+        static void Alta_Alumno() // Agrega un alumno nuevo o cambia a activo un alumno inactivo.
         {
             Alumnos nuevoAlumno = new Alumnos();
             ultimoIdAlumno++;
@@ -470,13 +444,11 @@ namespace Administracion_Alumnos
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Complete los datos del alumno solicitados a continuación ");
             Console.ResetColor();
-            nuevoAlumno.nombre = Validar_Nombre("Nombre: ");
-            nuevoAlumno.apellido = Validar_Nombre("Apellido: ");
+            nuevoAlumno.nombre = Validar_String("Nombre: ");
+            nuevoAlumno.apellido = Validar_String("Apellido: ");
             nuevoAlumno.dni = Validar_Dni("Dni: ");
-            Console.Write("Fecha de nacimento: ");
-            nuevoAlumno.fecha = Console.ReadLine();
-            Console.Write("Domicilio: ");
-            nuevoAlumno.domicilio = Console.ReadLine();
+            nuevoAlumno.fecha = Validar_String("Fecha de nacimiento: ");
+            nuevoAlumno.domicilio = Validar_String("Domicilio: ");
             nuevoAlumno.activo = true;
             bool existe = false;
             for (int i = 0; i < alumnos.Count; i++)
@@ -491,13 +463,14 @@ namespace Administracion_Alumnos
                     if ((alumnos[i].dni == nuevoAlumno.dni) && (alumnos[i].activo == false))
                     {
                         existe = true;
-                        string respuesta = siOno("El alumno que desea dar de alta ya se encuentra ingresado, pero no activo. Desea activarlo? si/no: ");
+                        string respuesta = siOno("El alumno que desea dar de alta ya se encuentra ingresado, pero no activo. ¿Desea activarlo? si/no: ");
                         if (respuesta == "si")
                         {
                             var alumnoActualizado = alumnos[i];
                             alumnoActualizado.activo = true;
                             alumnos[i] = alumnoActualizado;
                             Console.WriteLine("El alumno se actualizó con éxito");
+                            Guardar_Archivo(archivo_alumnos, alumnos, SerializarAlumno);
                         }
                     }
                 }
@@ -510,7 +483,7 @@ namespace Administracion_Alumnos
             }
         }
 
-        static void Baja_Alumno()
+        static void Baja_Alumno() // Cambia a inactivo un alumno activo.
         {
             int dni = Validar_Dni("Ingrese el número dni del alumno que desea dar de baja: ");
             bool existe = false;
@@ -519,7 +492,7 @@ namespace Administracion_Alumnos
                 if ((alumnos[i].dni == dni) && (alumnos[i].activo == false))
                 {
                     existe = true;
-                    Console.WriteLine("El alumno que desea ingresar ya fue dado de baja");
+                    Console.WriteLine("El alumno que desea ingresar ya fué dado de baja");
                 }
                 else
                 {
@@ -540,21 +513,20 @@ namespace Administracion_Alumnos
             }
         }
 
-        static void Modificar_Alumno()
+        static void Modificar_Alumno() // Modifica los datos del alumno.
         {
             int dni = Validar_Dni("Ingrese el dni del alumno que desea modificar: ");
             int opcion = Opcion_Modificar_Alumno();
+            bool existe = false;
             for (int i = 0; i < alumnos.Count; i++)
             {
-                if (alumnos[i].dni != dni)
+                if (alumnos[i].dni == dni)
                 {
-                    Console.WriteLine("El dni ingresado no corresponde a un alumno existente");
-                }
-                else
-                {
+                    existe = true;
+
                     if (opcion == 1)
                     {
-                        string nuevoNombre = Validar_Nombre("Ingrese el nuevo nombre del alumno: ");
+                        string nuevoNombre = Validar_String("Ingrese el nuevo nombre del alumno: ");
                         var alumnoActualizado = alumnos[i];
                         alumnoActualizado.nombre = nuevoNombre;
                         alumnos[i] = alumnoActualizado;
@@ -564,7 +536,7 @@ namespace Administracion_Alumnos
                     {
                         if (opcion == 2)
                         {
-                            string nuevoApellido = Validar_Nombre("Ingrese el nuevo apellido del alumno: ");
+                            string nuevoApellido = Validar_String("Ingrese el nuevo apellido del alumno: ");
                             var alumnoActualizado = alumnos[i];
                             alumnoActualizado.apellido = nuevoApellido;
                             alumnos[i] = alumnoActualizado;
@@ -584,8 +556,7 @@ namespace Administracion_Alumnos
                             {
                                 if (opcion == 4)
                                 {
-                                    Console.Write("Ingrese la nueva fecha: ");
-                                    string nuevaFecha = Console.ReadLine();
+                                    string nuevaFecha = Validar_String("Ingrese la nueva fecha: ");
                                     var alumnoActualizado = alumnos[i];
                                     alumnoActualizado.fecha = nuevaFecha;
                                     alumnos[i] = alumnoActualizado;
@@ -595,8 +566,7 @@ namespace Administracion_Alumnos
                                 {
                                     if (opcion == 5)
                                     {
-                                        Console.Write("Ingrese el nuevo domicilio: ");
-                                        string nuevoDomicilio = Console.ReadLine();
+                                        string nuevoDomicilio = Validar_String("Ingrese el nuevo domicilio: ");
                                         var alumnoActualizado = alumnos[i];
                                         alumnoActualizado.domicilio = nuevoDomicilio;
                                         alumnos[i] = alumnoActualizado;
@@ -609,14 +579,17 @@ namespace Administracion_Alumnos
                     Guardar_Archivo(archivo_alumnos, alumnos, SerializarAlumno);
                 }
             }
+            if (!existe) {
+                Console.WriteLine("El dni ingresado no corresponde a un alumno existente");
+            }
         }
 
-        static void Alta_Materia()
+        static void Alta_Materia() // Agrega una nueva materia o cambia una materia inactiva a activa.
         {
             Materias materia = new Materias();
             ultimoIdMateria++;
             materia.indice = ultimoIdMateria;
-            materia.nombre = Validar_Materia("Ingrese el nombre de la materia que desea dar de alta: ");
+            materia.nombre = Validar_String("Ingrese el nombre de la materia que desea dar de alta: ");
             materia.activa = true;
             bool existe = false;
             for (int i = 0; i < materias.Count; i++)
@@ -634,13 +607,14 @@ namespace Administracion_Alumnos
                     if ((nombreExistente == nuevoNombre) && (materias   [i].activa == false))
                     {
                         existe = true;
-                        string respuesta = siOno("La materia que desea dar de alta ya se encuentra ingresada pero no activa, desea activarla? si/no: ");
+                        string respuesta = siOno("La materia que desea dar de alta ya se encuentra ingresada pero no activa, ¿Desea activarla? si/no: ");
                         if (respuesta == "si")
                         {
                             var materiaActualizada = materias[i];
                             materiaActualizada.activa = true;
                             materias[i] = materiaActualizada;
                             Console.WriteLine("La materia se actualizó correctamente");
+                            Guardar_Archivo(archivo_materias, materias, SerializarMateria);
                         }
                     }
                 }
@@ -653,9 +627,9 @@ namespace Administracion_Alumnos
             }
         }
 
-        static void Baja_Materia()
+        static void Baja_Materia() // Cambia a inactiva una materia activa.
         {
-            string materia = Validar_Materia("Ingrese el nombre de la materia que desea dar de baja: ");
+            string materia = Validar_String("Ingrese el nombre de la materia que desea dar de baja: ");
             bool existe = false;
             for (int i = 0; i < materias.Count; i++)
             {
@@ -686,39 +660,18 @@ namespace Administracion_Alumnos
             }
         }
 
-        static int Convertir_Int(string entrada)
+        static void Modificar_Materia() // Cambia el nombre de la materia.
         {
-            int dni = 0;
-            bool esdni = false;
-            do
-            {
-                if (int.TryParse(entrada, out dni))
-                {
-                    esdni = true;
-                }
-                else
-                {
-                    Console.Write("El dato ingresado no corresponde a un dni, intente de nuevo: ");
-                    entrada = Console.ReadLine();
-                }
-            } while (!esdni);
-            return dni;
-        }
-
-        static void Modificar_Materia()
-        {
-            string materiaAmodificar = Validar_Materia("Ingrese el nombre de la materia que desea modificar: ");
+            string materiaAmodificar = Validar_String("Ingrese el nombre de la materia que desea modificar: ");
+            bool existe = false;
             for (int i = 0; i < materias.Count; i++)
             {
                 string materiaExistente = (materias[i].nombre).ToLower();
      
-                if (materiaExistente != materiaAmodificar)
+                if (materiaExistente == materiaAmodificar)
                 {
-                    Console.WriteLine("La materia que desea modificar no existe");
-                }
-                else
-                {
-                    string nuevaMateria = Validar_Materia("Ingrese el nuevo nombre de la materia: ");
+                    existe = true;
+                    string nuevaMateria = Validar_String("Ingrese el nuevo nombre de la materia: ");
                     var materiaActualizada = materias[i];
                     materiaActualizada.nombre = nuevaMateria;
                     materias[i] = materiaActualizada;
@@ -726,79 +679,67 @@ namespace Administracion_Alumnos
                     Guardar_Archivo(archivo_materias, materias, SerializarMateria);
                 }
             }
+            if (!existe) 
+            {
+                Console.WriteLine("La materia que desea modificar no existe");
+            }
         }
 
-        static int Indice_Materia(string mensaje)
+        static int Indice_Materia(string mensaje) // Busca el índice de una materia.
         {
-            Console.Write(mensaje);
-            string materia = "";
-            bool esindice = false;
+            string materia = Validar_String(mensaje);
             int indice = 0;
-            while (!esindice)
-            {
-                materia = Console.ReadLine();
-                materia = materia.ToLower();
+
                 for (int i = 0; i < materias.Count; i++)
                 {
                     string materiaexist = materias[i].nombre;
-                    materiaexist = materiaexist.ToLower();
-                    if (materiaexist == materia)
+                    if (materiaexist.ToLower() == materia.ToLower())
                     {
                         indice = materias[i].indice;
-                        esindice = true;
-                    }
-                    else
-                    {
-                        Console.Write("La materia ingresada no existe, intente de nuevo: ");
-
                     }
                 }
-            }
+
             return indice;
         }
 
-        static int Indice_Alumno(string mensaje)
+        static int Indice_Alumno(string mensaje) // Busca el índice de un alumno.
         {
-            Console.Write(mensaje);
-            string entrada = "";
-            bool esindice = false;
-            int dni = 0;
+            int dni = Validar_Dni(mensaje);
             int indice = 0;
-            while (!esindice)
-            {
-                entrada = Console.ReadLine();
-                dni = Convertir_Int(entrada);
 
                 for (int i = 0; i < alumnos.Count; i++)
                 {
                     if (alumnos[i].dni == dni)
                     {
                         indice = alumnos[i].indice;
-                        esindice = true;
-                    }
-                    else
-                    {
-                        Console.Write("El dni ingresado no existe, intente de nuevo: ");
-
                     }
                 }
-            }
+            
             return indice;
         }
 
-        static void Nota_Alumno()
+        static void Nota_Alumno() // Agrega un registro con la nota y fecha del examen final de un alumno.
         {
             int indiceMateria = Indice_Materia("Ingrese el nombre de la materia que cursa el alumno: ");
+            if (indiceMateria == 0)
+            {
+                Console.WriteLine("La materia que ha ingresado no existe");
+                return;
+            }
             int indiceAlumno = Indice_Alumno("Ingrese el dni del alumno: ");
+            if (indiceAlumno == 0)
+            {
+                Console.WriteLine("El alumno que ha ingresado no existe");
+                return;
+            }
             string fechaFinal = "-";
             string estado = "-";
-            string rindio = siOno("El alumno rindió el examen final? si/no: ");
+            string rindio = siOno("¿El alumno rindió el examen final? si/no: ");
             double notaFinal = 00;
             if (rindio == "si")
             {
                 notaFinal = Validar_Nota_Final();
-                Console.Write("Ingrese la fecha en la que rindió del examen final: ");
-                fechaFinal = Console.ReadLine();
+                fechaFinal = Validar_String("Ingrese la fecha en la que rindió del examen final: ");
                 if (notaFinal >= 6)
                 {
                     estado = "Aprobado";
@@ -810,11 +751,10 @@ namespace Administracion_Alumnos
             }
             else
             {
-                string siOnoFecha = siOno("¿Sabe la fecha del examen final?");
+                string siOnoFecha = siOno("¿Sabe la fecha del examen final? si/no: ");
                 if (siOnoFecha == "si")
                 {
-                    Console.Write("Ingrese la fecha del examen final: ");
-                    fechaFinal = Console.ReadLine();
+                    fechaFinal = Validar_String("Ingrese la fecha en la que rendira del examen final: ");
                     estado = "Anotado";
                 }
             }
@@ -831,7 +771,7 @@ namespace Administracion_Alumnos
             Guardar_Archivo(archivo_alumno_materias, alumno_materias, SerializarAlumnoMateria);
         }
 
-        static void Leer_Notas()
+        static void Leer_Notas() // Muestra el registro de notas.
         {
             if (alumno_materias.Count == 0)
             {
@@ -845,7 +785,7 @@ namespace Administracion_Alumnos
             }
         }
 
-
+    // MAIN - Maneja le ejecución del programa.
         static void Main(string[] args)
         { 
             Console.ForegroundColor = ConsoleColor.Yellow;
