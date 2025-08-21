@@ -6,6 +6,7 @@
     <RootNamespace>Administracion_Alumnos</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <NoWarn>CS8600;CS8602;CS8603</NoWarn>
   </PropertyGroup>
 
 </Project>
