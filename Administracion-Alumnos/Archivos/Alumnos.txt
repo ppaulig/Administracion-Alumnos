@@ -1,0 +1,10 @@
+1,Paula,General,47163496,03/04/2006,Bravard 1559,True
+2,Luis,Perez,38765412,15/07/2005,Av Libertador 231,False
+3,Sofia,Gomez,41234567,22/12/2007,San Martin 842,True
+4,Matias,Rodriguez,39876543,10/01/2006,Corrientes 1200,True
+5,Valentina,Lopez,42345678,05/09/2005,Mendoza 550,False
+6,Nicolas,Fernandez,40123456,30/11/2006,Uruguay 760,True
+7,Martina,Gimenez,43456789,18/03/2007,Laprida 102,True
+8,Santiago,Diaz,39812345,27/06/2005,Belgrano 445,False
+9,Camila,Martinez,41236789,12/08/2006,Av Cordoba 900,True
+10,Facundo,Sanchez,42347890,02/02/2007,Rivadavia 600,False

@@ -55,11 +55,11 @@ namespace Administracion_Alumnos
 
         public static List<Alumno_Materias> alumno_materias = new List<Alumno_Materias>();
 
-        public static string archivo_alumnos = "Archivos/Alumnos.txt";
+        public static string archivo_alumnos = Path.Combine("Archivos", "Alumnos.txt");
 
-        public static string archivo_alumno_materias = "Archivos/Alumno_Materias.txt";
+        public static string archivo_alumno_materias = Path.Combine("Archivos", "Alumno_Materias.txt");
 
-        public static string archivo_materias = "Archivos/Materias.txt";
+        public static string archivo_materias = Path.Combine("Archivos", "Materias.txt");
 
         public static int ultimoIdAlumno = 0;
 

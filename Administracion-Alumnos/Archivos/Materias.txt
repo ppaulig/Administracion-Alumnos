@@ -1,0 +1,10 @@
+1,Arquitectura y Sistemas Operativos,False
+2,Matemática,True
+3,Programación I,True
+4,Bases de Datos,True
+5,Redes de Computadoras,False
+6,Algoritmos y Estructuras de Datos,True
+7,Sistemas Operativos,False
+8,Inteligencia Artificial,True
+9,Desarrollo Web,True
+10,Seguridad Informática,False
