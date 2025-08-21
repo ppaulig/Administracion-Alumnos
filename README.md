@@ -1,11 +1,11 @@
-# 📚 Sistema de Administración de Alumnos
+# 🎓 Sistema de Administración de Alumnos
 
 Este proyecto es una aplicación de **consola en C#** que gestiona la administración de alumnos de una universidad.  
 Fue desarrollado como **proyecto final de la materia Programación I**, y luego mejorado con nuevas validaciones, estructuras y organización.
 
 ---
 
-## ⚙️ Lógica General del Programa
+## ⤿ Lógica General del Programa
 
 El sistema permite administrar:
 - **Alumnos**
@@ -14,20 +14,20 @@ El sistema permite administrar:
 
 Toda la información se maneja con **archivos de texto plano** (`.txt`), los cuales funcionan como base de datos simple para almacenar los datos.
 
-### Estructuras (Structs)
+### ⭒ Estructuras (Structs)
 El programa define tres estructuras principales:
 - `Alumnos`: contiene índice, nombre, apellido, DNI, fecha de nacimiento, domicilio y estado (activo = true/false).
 - `Materias`: contiene índice, nombre y estado (activa = true/false).
 - `Alumno_Materias`: relaciona alumnos con materias y registra estado (Aprobado/Desaprobado/Anotado), nota final y fecha del examen.
 
-### Manejo de Archivos
+### ⭒ Manejo de Archivos
 - **Archivos usados:**
   - `Archivos/Alumnos.txt`
   - `Archivos/Materias.txt`
   - `Archivos/Alumno_Materias.txt`
 - Cada archivo se carga en memoria al iniciar el programa y se reescribe con los cambios al cerrarlo.
 
-### Menús del Sistema
+### ⭒ Menús del Sistema
 El programa funciona con un sistema de **menús interactivos**, donde cada entrada se valida para evitar errores:
 
 1. **Menú Principal**
@@ -55,7 +55,7 @@ El programa funciona con un sistema de **menús interactivos**, donde cada entra
    - Leer archivo de notas
    - Volver al inicio
 
-### Validaciones
+### ⭒ Validaciones
 El programa incluye validaciones para:
 - Entradas de texto (no vacías ni numéricas cuando no corresponde).  
 - DNI (8 dígitos).  
@@ -64,6 +64,21 @@ El programa incluye validaciones para:
 
 ---
 
-## 🚀 Guía de Uso
+## ⤿ Guía de Uso
+### 1. Descargar el proyecto
+Clonar el repositorio:
+```bash
+git clone https://github.com/ppaulig/Administracion-Alumnos.git
+```  
+### 2. Compilar el programa
+Abrir una terminal en la carpeta del proyecto (donde se encuentra el archivo 'Program.cs' y ) y ejecutar:
+```bash
+dotnet build
+```
+### 3. Ejecutar el programa
+```bash
+dotnet run
+```
+
 
 
