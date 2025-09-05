@@ -31,10 +31,10 @@ El programa define tres estructuras principales:
 El programa funciona con un sistema de **menús interactivos**, donde cada entrada se valida para evitar errores:
 
 1. **Menú Principal**
-   - 1. Alumnos  
-   - 2. Materias  
-   - 3. Archivo de notas  
-   - 4. Salir  
+   - Alumnos  
+   - Materias  
+   - Archivo de notas  
+   - Salir  
 
 2. **Menú Alumnos**
    - Alta de alumno  
