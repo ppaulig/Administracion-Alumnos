@@ -71,7 +71,7 @@ Clonar el repositorio:
 git clone https://github.com/ppaulig/Administracion-Alumnos.git
 ```  
 ### 2. Compilar el programa
-Abrir una terminal en la carpeta del proyecto (donde se encuentra el archivo 'Program.cs' y ) y ejecutar:
+Abrir una terminal en la carpeta del proyecto (donde se encuentra el archivo 'Program.cs') y ejecutar:
 ```bash
 dotnet build
 ```
